@@ -1,0 +1,36 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "seed": "node seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcrypt": "^6.0.0",
+    "cloudinary": "^2.8.0",
+    "connect-mongo": "^4.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "form-data": "^4.0.5",
+    "jsonwebtoken": "^9.0.3",
+    "method-override": "^3.0.0",
+    "mongodb": "^7.0.0",
+    "multer": "^2.0.2",
+    "streamifier": "^0.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}

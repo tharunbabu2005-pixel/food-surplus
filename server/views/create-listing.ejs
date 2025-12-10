@@ -1,0 +1,14 @@
+<% include('layout', { title: 'Create Listing', user: user, body: '' }) %>
+<% function renderBody(){ %>
+  <h1>Create Listing</h1>
+  <% if (error) { %><div style="color:red;"><%= error %></div><% } %>
+  <form method="post" action="/create-listing" enctype="multipart/form-data">
+    <div><input name="title" placeholder="Title" required></div>
+    <div><textarea name="description" placeholder="Description"></textarea></div>
+    <div><input name="price" type="number" placeholder="Price" step="0.01"></div>
+    <div><input name="quantityAvailable" type="number" placeholder="Quantity"></div>
+    <div><input name="image" type="file" accept="image/*"></div>
+    <button type="submit">Create</button>
+  </form>
+<% } %>
+<%- renderBody() %>

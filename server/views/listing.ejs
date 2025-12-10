@@ -1,0 +1,26 @@
+<% include('layout', { title: listing.title, user: user, body: '' }) %>
+<% function renderBody(){ %>
+  <h1><%= listing.title %></h1>
+  <% if (listing.imageUrl) { %>
+    <img src="<%= listing.imageUrl %>" style="width:320px;height:240px;object-fit:cover;">
+  <% } %>
+  <p><%= listing.description %></p>
+  <p>Price: ₹<%= listing.price %></p>
+  <p>Available: <%= listing.quantityAvailable %></p>
+
+  <% if (user && user.role === 'student') { %>
+    <form method="post" action="/listing/<%= listing._id %>/order">
+      <label>Quantity: <input name="quantity" type="number" value="1" min="1" max="<%= listing.quantityAvailable %>"></label>
+      <button type="submit" <%= listing.quantityAvailable <= 0 ? 'disabled' : '' %>>Order</button>
+    </form>
+  <% } else if (!user) { %>
+    <p><a href="/login">Login</a> to order</p>
+  <% } %>
+
+  <% if (user && user.role === 'restaurant' && user.userId === (listing.restaurantId && listing.restaurantId.toString())) { %>
+    <p>This is your listing.</p>
+  <% } %>
+
+  <% if (error) { %><div style="color:red;"><%= error %></div><% } %>
+<% } %>
+<%- renderBody() %>

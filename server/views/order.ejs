@@ -1,0 +1,22 @@
+<% include('layout', { title: 'Orders', user: user, body: '' }) %>
+<% function renderBody(){ %>
+  <h1>Your Orders</h1>
+  <table border="1" cellpadding="6">
+    <thead>
+      <tr><th>_id</th><th>Listing</th><th>Qty</th><th>Total</th><th>Status</th><th>Created</th></tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(o => { %>
+        <tr>
+          <td><%= o._id %></td>
+          <td><%= o.listingId %></td>
+          <td><%= o.quantity %></td>
+          <td>₹<%= o.totalAmount %></td>
+          <td><%= o.status %></td>
+          <td><%= new Date(o.createdAt).toLocaleString() %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } %>
+<%- renderBody() %>
